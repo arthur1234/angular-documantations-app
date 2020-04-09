@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ItemsValues, MenuItems} from '../../shared/interfaces';
 import {HttpClient} from '@angular/common/http';
+import {AuthenticationService} from '../../shared/authentication.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +14,8 @@ export class MainPageComponent implements OnInit {
   private data: any;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public auth: AuthenticationService
   ) { }
 
   ngOnInit(): void {

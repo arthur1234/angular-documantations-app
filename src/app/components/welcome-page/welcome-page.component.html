@@ -1,0 +1,23 @@
+<nav class="navbar  navbar-dark bg-dark rounded">
+  <ul class="navbar">
+    <li class="nav-item blue" *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/login" class="nav-link">
+        Login
+      </a>
+    </li>
+    <li class="nav-item blue" *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/register" class="nav-link">
+        Register
+      </a>
+    </li>
+
+  </ul>
+</nav>
+
+<div class="welcome">
+  <img class="login-img" src="../../../assets/images/login.jpg" alt="login">
+
+  <h2>Documentations Writing</h2>
+
+  <p>All project should be good documented, must to be!</p>
+</div>

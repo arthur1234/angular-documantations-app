@@ -35,6 +35,13 @@
             </a>
           </ng-container>
         </ng-container>
+
+        <span *ngIf="auth.isLoggedIn()">
+          <a  href="#"  mat-button routerLink=""  (click)="auth.logout()">
+            Logout
+          </a>
+          <i class="material-icons right arrow-icons">logout</i>
+        </span>
       </div>
 
 
