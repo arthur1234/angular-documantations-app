@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+
+  i {
+    display: inline-block;
+    padding-top: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    position: relative;
+    top: 7px;
+    font-size: 1.5rem;
+  }
+
+  i.title {
+    margin: 0;
+    top: 5px;
+    font-size: 28px;
+  }
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .col-10 {
+      width: 100%;
+    }
+  }
+}

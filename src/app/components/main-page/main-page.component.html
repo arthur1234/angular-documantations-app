@@ -1,0 +1,81 @@
+
+<div style="height: 80vh;" >
+
+
+  <mat-toolbar color="primary" color="primary">
+    <mat-toolbar-row>
+      <!--   Hamburger mobile menu icon -->
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="logo-slog">Project Name Documentations</span>
+      <span class="menu-spacer"></span>
+
+      <!--   DESKTOP MENU -->
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+        <!--   DESKTOP MENU -->
+        <ng-container *ngFor="let item of menuArray">
+          <!-- Handle main menu items here -->
+          <ng-container *ngIf="item.below">
+            <!--   if submenu exist-->
+            <a  href="#"  mat-button [matMenuTriggerFor]="menu.buildMenu">
+              {{item.title}}
+              <i class="material-icons right arrow-icons">arrow_drop_down</i>
+            </a>
+            <!-- Handle sub menu items -->
+            <app-create-submenu #menu [items]="item.below"></app-create-submenu>
+          </ng-container>
+          <!-- Leaf sub menu items here -->
+          <ng-container *ngIf="!item.below">
+            <a  href="#"  mat-button  [routerLink]="item.link">
+              {{item.title}}
+            </a>
+          </ng-container>
+        </ng-container>
+      </div>
+
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <!--   MOBILE MENU -->
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+<!--        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>-->
+        <ng-container *ngFor="let item of menuArray">
+          <!-- Handle main menu items here -->
+          <ng-container *ngIf="item.below">
+            <a mat-list-item [matMenuTriggerFor]="menu.buildMenu">
+              {{item.title}}
+            </a>
+            <!-- Handle sub menu items -->
+            <app-create-submenu #menu [items]="item.below"></app-create-submenu>
+          </ng-container>
+          <!-- Leaf sub menu items here -->
+          <ng-container *ngIf="!item.below">
+            <a mat-list-item color="primary" [routerLink]="item.link">
+              {{item.title}}
+            </a>
+          </ng-container>
+        </ng-container>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+
+
+
+      <app-document></app-document>
+
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+

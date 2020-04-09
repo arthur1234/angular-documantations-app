@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "documantations-app": {
@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "node_modules/@mdi/font/css/materialdesignicons.css",
+              "node_modules/highlight.js/styles/github.css"
             ],
-            "scripts": []
+            "scripts": [
+
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/materialize-css/dist/js/materialize.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "documantations-app"
+    }
+  },
+  "defaultProject": "documantations-app",
+  "cli": {
+    "analytics": false
+  }
 }

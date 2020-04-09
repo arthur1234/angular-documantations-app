@@ -1,0 +1,20 @@
+img.outerImg {
+  max-width: 200px;
+  position: relative;
+  z-index: 10;
+}
+
+img.innerImg {
+  position:relative;
+  max-width: 700px;
+  display: none;
+  z-index: 100;
+}
+
+div {
+  max-width: 200px;
+  background-color: orange;
+  margin-right: 20px;
+}
+
+

@@ -1,0 +1,13 @@
+
+
+
+<div #outerDiv (mousemove)="onMouseMove($event, outerDiv, innerImg)" (mouseleave)="onMouseLeave()">
+  <img [src]="img" (click)="openBlank($event)"  class="outerImg" #innerImg>
+
+  <img [src]="img"  class="innerImg" [ngStyle]="styles" >
+</div>
+
+
+
+
+
