@@ -11,3 +11,16 @@ export  class ItemsValues {
   ) {
   }
 }
+
+
+
+
+export interface Post {
+  id?: string;
+  title: string;
+  text: string;
+  code?: string;
+  author: string;
+  date: any;
+  imgURLs?: any;
+}

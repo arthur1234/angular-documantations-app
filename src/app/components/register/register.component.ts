@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationService, TokenPayload} from '../../shared/authentication.service';
+import {AuthenticationService, TokenPayload} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class RegisterComponent {
   register() {
     this.auth.register(this.credentials).subscribe(
       () => {
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/start');
       },
       error => {
         console.error(error);

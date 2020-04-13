@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HighlightResult } from 'ngx-highlightjs';
+import { CodeEditorComponent} from '../code-editor/code-editor.component';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-document',

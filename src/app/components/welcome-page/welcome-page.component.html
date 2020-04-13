@@ -10,6 +10,11 @@
         Register
       </a>
     </li>
+    <li class="nav-item blue" *ngIf="auth.isLoggedIn()">
+    <a routerLink="/start" class="nav-link">
+      To start page
+    </a>
+  </li>
 
   </ul>
 </nav>

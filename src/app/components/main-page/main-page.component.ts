@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ItemsValues, MenuItems} from '../../shared/interfaces';
 import {HttpClient} from '@angular/common/http';
-import {AuthenticationService} from '../../shared/authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-main-page',
@@ -38,12 +38,12 @@ export class MainPageComponent implements OnInit {
       {
         "key":"something.front_page",
         "title":"Second item",
-        "link":"http://dev.something.com/",
+        "link":"",
       },
       {
         "key":"78dc07e5-399a-46b3-86a5-f7141c55579e",
-        "title":"Third able to render a list",
-        "link":"/articles",
+        "title":"Third able ",
+        "link":"/start",
         "below":[
           {
             "key":"a7f279d6-7664-4adf-8a0f-25da95502143",

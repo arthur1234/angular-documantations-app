@@ -1,4 +1,8 @@
 
+
+
+
+
 <div style="height: 80vh;" >
 
 
@@ -21,7 +25,7 @@
           <!-- Handle main menu items here -->
           <ng-container *ngIf="item.below">
             <!--   if submenu exist-->
-            <a  href="#"  mat-button [matMenuTriggerFor]="menu.buildMenu">
+            <a   mat-button [matMenuTriggerFor]="menu.buildMenu" class="btn-primary">
               {{item.title}}
               <i class="material-icons right arrow-icons">arrow_drop_down</i>
             </a>
@@ -30,14 +34,14 @@
           </ng-container>
           <!-- Leaf sub menu items here -->
           <ng-container *ngIf="!item.below">
-            <a  href="#"  mat-button  [routerLink]="item.link">
+            <a    mat-button  [routerLink]="item.link">
               {{item.title}}
             </a>
           </ng-container>
         </ng-container>
 
         <span *ngIf="auth.isLoggedIn()">
-          <a  href="#"  mat-button routerLink=""  (click)="auth.logout()">
+          <a    mat-button routerLink=""  (click)="auth.logout()">
             Logout
           </a>
           <i class="material-icons right arrow-icons">logout</i>

@@ -1,0 +1,13 @@
+
+
+<ace-editor #editorInfinity
+            [(text)]="contentAutoUpdate"
+            [autoUpdateContent]="true"
+            [options]="{maxLines: 'Infinity'}"
+            (textChanged)="onRuleChange($event)"
+            mode="sql"
+            style="min-height: 250px; width:100%;"></ace-editor>
+
+
+
+

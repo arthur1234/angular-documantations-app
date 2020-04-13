@@ -8,6 +8,7 @@ import {AuthGuardService} from './auth-guard.service';
 import {LoginComponent} from '../components/login/login.component';
 import {RegisterComponent} from '../components/register/register.component';
 import {WelcomePageComponent} from '../components/welcome-page/welcome-page.component';
+import {EditDocumentComponent} from '../components/edit-document/edit-document.component';
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -15,8 +16,9 @@ const routes: Routes = [
       { path: '', component:  WelcomePageComponent },
       { path: 'login', component:  LoginComponent },
       { path: 'register', component: RegisterComponent },
-      {path: 'start', component: MainPageComponent, canActivate: [AuthGuardService]  },
-      {path: 'document/:id', component: DocumentComponent}
+      { path: 'edit', component: EditDocumentComponent },
+      { path: 'start', component: MainPageComponent, canActivate: [AuthGuardService]  },
+      { path: 'document/:id', component: DocumentComponent}
 
     ] },
 

@@ -1,9 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { DocumentComponent } from './components/document/document.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatSidenavModule} from '@angular/material/sidenav';
@@ -17,22 +13,29 @@ import {
   HIGHLIGHT_OPTIONS,
   HighlightOptions
 } from 'ngx-highlightjs';
+import { RouterModule} from '@angular/router';
+import { RoutingModule} from './shared/routing.module';
+import { HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AceEditorModule} from 'ng2-ace-editor';
+
+
+import { AppComponent } from './app.component';
+import { DocumentComponent } from './components/document/document.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
-import { RouterModule} from '@angular/router';
-import { RoutingModule} from './shared/routing.module';
 import { MenuComponent } from './components/menu/menu.component';
-import { HttpClientModule} from '@angular/common/http';
-import { InnerHeaderBarComponent } from './components/inner-header-bar/inner-header-bar.component';
-import { FormsModule} from '@angular/forms';
-import {RegisterComponent} from './components/register/register.component';
-import {LoginComponent} from './components/login/login.component';
-import {AuthenticationService} from './shared/authentication.service';
-import {AuthGuardService} from './shared/auth-guard.service';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { RegisterComponent} from './components/register/register.component';
+import { LoginComponent} from './components/login/login.component';
+import { InnerHeaderBarComponent } from './components/inner-header-bar/inner-header-bar.component';
 
-
+import { AuthenticationService} from './services/authentication.service';
+import { AuthGuardService} from './shared/auth-guard.service';
+import { CodeEditorComponent } from './components/code-editor/code-editor.component';
+import {SharedModule} from './shared/shared.module';
+import { EditDocumentComponent } from './components/edit-document/edit-document.component';
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     InnerHeaderBarComponent,
     RegisterComponent,
     LoginComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    CodeEditorComponent,
+    EditDocumentComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,10 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     RouterModule,
     RoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AceEditorModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthenticationService,

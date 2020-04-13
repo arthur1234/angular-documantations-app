@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../shared/authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-welcome-page',
@@ -10,10 +11,14 @@ export class WelcomePageComponent implements OnInit {
 
   constructor(
 
-    public auth:AuthenticationService
+    public auth:AuthenticationService,
+    public router:Router
   ) { }
 
   ngOnInit(): void {
+    if(this.auth.isLoggedIn()){
+      this.router.navigateByUrl('/start');
+    }
   }
 
 }
