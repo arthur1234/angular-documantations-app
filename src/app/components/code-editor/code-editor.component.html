@@ -1,7 +1,7 @@
 
 
 <ace-editor #editorInfinity
-            [(text)]="contentAutoUpdate"
+            [(text)]="codeStr"
             [autoUpdateContent]="true"
             [options]="{maxLines: 'Infinity'}"
             (textChanged)="onRuleChange($event)"

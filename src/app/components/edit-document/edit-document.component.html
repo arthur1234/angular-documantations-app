@@ -1,56 +1,53 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <h1>Create New Post</h1>
 
-  <div [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
 
-  >
-    <label for="title">Post Title</label>
+  <div [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}" >
+    <label for="title">Post Title </label>
     <br>
 
-    <input type="text" id="title" formControlName="title">
+    <input type="text" id="title" formControlName="title" [ngModel]="postData.title">
     <br>
 
     <div
       *ngIf="form.get('title').touched && form.get('title').invalid"
-      class="validation"
-    >
+      class="validation" >
       <small *ngIf="form.get('title').errors.required">
         Please enter post title
       </small>
     </div>
   </div>
-
-  <br>
   <br>
   <div>
     <label>Post Content</label>
-    <quill-editor formControlName="text"></quill-editor>
+    <quill-editor formControlName="text" [styles]="editorStyle" [ngModel]="postData.text" ></quill-editor>
   </div>
 
-
+  <div>
+    <label>Code </label>
+    <app-code-editor [codeStr]="postData.code"  (onSelectValue)='selectValue($event)'></app-code-editor>
+  </div>
   <br>
-  <div [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}"
-
-  >    <br>
+  <div [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}">
 
     <br>
     <label for="author">Author</label>
-    <input type="text" id="author" formControlName="author">
+    <input type="text"
+           id="author"
+           formControlName="author"
+           [ngModel]="postData.author"    >
     <div
       *ngIf="form.get('author').touched && form.get('author').invalid"
-      class="validation"
-    >
+      class="validation" >
       <small *ngIf="form.get('author').errors.required">
         Please enter name of author
       </small>
     </div>
   </div>
   <br>
-
-  <br>
   <button
     type="submit"
     class="btn btn-block btn-dark"
-    [disabled]="form.invalid"
-  >Create Post</button>
+    [disabled]="form.invalid" >
+        Create New Documentation's Page
+  </button>
 </form>

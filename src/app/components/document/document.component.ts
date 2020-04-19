@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HighlightResult } from 'ngx-highlightjs';
 import { CodeEditorComponent} from '../code-editor/code-editor.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Post} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-document',
@@ -15,15 +16,24 @@ export class DocumentComponent implements OnInit {
   response: HighlightResult;
 
   code = `function myFunction() {
-  document.getElementById("demo1").innerHTML = "Hello there!";
-  document.getElementById("demo2").innerHTML = "How are you?";
+            document.getElementById("demo1").innerHTML = "Hello there!";
+            document.getElementById("demo2").innerHTML = "How are you?";
 
-}
-var xsdf= 'sdfsdf';`;
+          }
+          var xsdf= 'sdfsdf';`;
 
   images: any;
+  postData: Post;
 
   ngOnInit(): void {
+
+    this.postData = {
+      _id: null,
+      title: 'this.form.value.title',
+      author: 'this.form.value.author',
+      code: 'this.form.value.code',
+      text: 'this.form.value.text'
+    }
     this.images = [
       'http://tsidkilov.online/museit/wp-content/uploads/2019/01/3.5-11.png',
 

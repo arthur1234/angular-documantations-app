@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {ActivatedRoute, Params} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -16,10 +16,16 @@ import {Post} from '../../shared/interfaces';
 })
 export class EditDocumentComponent implements OnInit {
 
+  @Input()  postData: Post;
+
   form: FormGroup;
- // post: Post;
+  post: Post;
   submitted: boolean;
   uSub: Subscription;
+  editorStyle: object = {
+    height: '250px',
+    backgroundColor: 'lightgray'
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -29,17 +35,23 @@ export class EditDocumentComponent implements OnInit {
     private alert: AlertService*/
   ) { }
 
+  selectValue( newValue : any ) {
+    this.postData.code=newValue;
+    console.log(newValue);
+  }
+
   ngOnInit(): void {
+
+
 
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required ),
       text: new FormControl(null, Validators.required ),
       author: new FormControl(null, Validators.required)
     });
+    this.post = this.postData;
 
-
-
-
+    console.log(this.post.title)
 
     // this.route.params.pipe(
     //   switchMap( ( Params) => {
@@ -50,23 +62,27 @@ export class EditDocumentComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.postData.code)
     if (this.form.invalid) {
       return;
     }
 
-    const post: Post = {
+    this.post= {
+      _id: null,
       title: this.form.value.title,
       author: this.form.value.author,
-      text: this.form.value.text,
-      date: new Date()
+      code: this.postData.code,
+      text: this.form.value.text
     };
 
-    this.reqResService.create(post).subscribe(() => {
-      this.form.reset();
-      // this.alert.success('Post created.');
-    })
+    this.uSub = this.reqResService
+      .create(this.post)
+      .subscribe(() => {
+        this.form.reset();
+        // this.alert.success('Post created.');
+       })
 
-    console.log(post);
+    console.log(this.post);
   }
 
 

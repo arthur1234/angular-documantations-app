@@ -1,7 +1,8 @@
 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import {Component, ViewChild, AfterViewInit, Input, Output, EventEmitter} from '@angular/core';
 import 'brace/theme/github';
 import 'brace/mode/sql';
+import {ControlValueAccessor} from '@angular/forms';
 declare let ace: any;
 
 @Component({
@@ -11,14 +12,16 @@ declare let ace: any;
 })
 export class CodeEditorComponent implements AfterViewInit {
 
+  @Input() codeStr: string;
+  @Output() onSelectValue = new EventEmitter;
 
-  contentAutoUpdate = '';
 
   @ViewChild('highlight') highlight;
   @ViewChild('editorInfinity') editorInfinity;
 
   onRuleChange(e) {
     console.log(e);
+    this.onSelectValue.emit( e );
   }
 
   ngAfterViewInit() {

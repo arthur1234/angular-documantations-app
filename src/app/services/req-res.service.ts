@@ -17,7 +17,7 @@ export class ReqResService {
   }
 
   create(post: Post): Observable<Post> {
-    return this.http.post(`${environment.hostURL}/users/create_document`, post)
+    return this.http.post(`${environment.hostURL}/documentations/create_document`, post)
       .pipe(map((response: any) => {
         return {
           ...post,
@@ -29,26 +29,7 @@ export class ReqResService {
 
   }
 
-  save(post: Post) {
-
-  }
 }
 
 
-/*
 
-
- public  register(user: TokenPayload) {
-    const base = this.http.post(`${environment.hostURL}/users/register`, user);
-    const  request = base.pipe(
-      map((data: TokenResponse) => {
-        if (data.token) {
-          this.saveToken(data.token);
-        }
-      })
-    );
-    return request;
-  }
-
-
- */

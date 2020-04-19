@@ -16,11 +16,11 @@ export  class ItemsValues {
 
 
 export interface Post {
-  id?: string;
+  _id?: string;
   title: string;
   text: string;
   code?: string;
   author: string;
-  date: any;
+  date?: any;
   imgURLs?: any;
 }
