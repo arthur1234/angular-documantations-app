@@ -1,55 +1,61 @@
 <div class="wrapper col-10">
-  <app-inner-header-bar></app-inner-header-bar>
+  <app-inner-header-bar (editMode)="editMode($event)"></app-inner-header-bar>
   <div class="body">
     <hr>
-      <app-edit-document [postData]="postData"></app-edit-document>
-    <hr>
-    <div class="elementor-element elementor-element-7a6f25e elementor-widget elementor-widget-text-editor"
-         data-element_type="text-editor.default"
-         data-id="7a6f25e">
-      <div class="elementor-widget-container">
-        <div class="elementor-text-editor elementor-clearfix">
-          <ol>
-            <li>After Verification New Studio-User has two choices : Continue registration or to skip this step<br>1.1
-              If Studio-User chooses to skip next registration steps, he will be redirected to User settings section.
-            </li>
-            <li>&nbsp;if Studio-User continue his registration on same window he have one, two or three inputs, here is
-              a list of all steps:
-              <ul>
-                <li><span style="color: #008000;">Name of studio, Website</span></li>
-                <li><span style="color: #008000;">Phone number of studio, can not be the same as Studio-User mobile number (verification not needed )</span>
-                </li>
-                <li><span style="color: #008000;">Region, City</span></li>
-                <li><span style="color: #008000;">Street, number, house number, apartment number.</span></li>
-                <li><span style="color: #008000;">Congratulations popup after finishing all registration steps.</span>
-                </li>
-                <li><span style="color: #008000;">There are only one required field – Name of Studio.</span></li>
-              </ul>
-            </li>
-            <li>All fields should have validation.</li>
-          </ol>
+
+    <app-edit-document *ngIf="onEditFlag; else viewMode" [postData]="postData"></app-edit-document>
+
+    <ng-template #viewMode>
+      <div class="elementor-element elementor-element-7a6f25e elementor-widget elementor-widget-text-editor"
+           data-element_type="text-editor.default"
+           data-id="7a6f25e">
+        <div class="elementor-widget-container">
+          <div class="elementor-text-editor elementor-clearfix">
+            <ol>
+              <li>After Verification New Studio-User has two choices : Continue registration or to skip this step<br>1.1
+                If Studio-User chooses to skip next registration steps, he will be redirected to User settings section.
+              </li>
+              <li>&nbsp;if Studio-User continue his registration on same window he have one, two or three inputs, here
+                is
+                a list of all steps:
+                <ul>
+                  <li><span style="color: #008000;">Name of studio, Website</span></li>
+                  <li><span style="color: #008000;">Phone number of studio, can not be the same as Studio-User mobile number (verification not needed )</span>
+                  </li>
+                  <li><span style="color: #008000;">Region, City</span></li>
+                  <li><span style="color: #008000;">Street, number, house number, apartment number.</span></li>
+                  <li><span style="color: #008000;">Congratulations popup after finishing all registration steps.</span>
+                  </li>
+                  <li><span style="color: #008000;">There are only one required field – Name of Studio.</span></li>
+                </ul>
+              </li>
+              <li>All fields should have validation.</li>
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="highlight_hgx">
-      <h3>Main working!</h3>
 
-      <pre><code (highlighted)="onHighlight($event)" [highlight]="code" [lineNumbers]="true"></code></pre>
+      <div class="highlight_hgx">
+        <h3>Main working!</h3>
 
-      <h4>Highlight response</h4>
-      <pre>{{ response | json }}</pre>
+        <pre><code (highlighted)="onHighlight($event)" [highlight]="code" [lineNumbers]="true"></code></pre>
 
-    </div>
+        <h4>Highlight response</h4>
+        <pre>{{ response | json }}</pre>
 
-    <!-- You can now use your library component in app.component.html -->
-    <h1>
-      Image Viewer
-    </h1>
-    <div style="display: flex; flex-direction: row">
-    <app-image-viewer *ngFor="let parentImg of images" [img]="parentImg"></app-image-viewer>
+      </div>
 
-    </div>
+      <!-- You can now use your library component in app.component.html -->
+      <h1>
+        Image Viewer
+      </h1>
+      <div style="display: flex; flex-direction: row">
+        <app-image-viewer *ngFor="let parentImg of images" [img]="parentImg"></app-image-viewer>
+
+      </div>
+    </ng-template>
+
     <div class="tempalte-if-else" style="width: 100%;height: 200px"></div>
   </div>
 </div>

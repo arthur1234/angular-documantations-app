@@ -13,6 +13,7 @@ export class DocumentComponent implements OnInit {
 
   constructor() { }
 
+  onEditFlag: boolean = false;
   response: HighlightResult;
 
   code = `function myFunction() {
@@ -55,5 +56,9 @@ export class DocumentComponent implements OnInit {
       top: '{...}',
       value: '{...}'
     };
+  }
+
+  editMode (openEditMode: boolean){
+    this.onEditFlag = openEditMode;
   }
 }

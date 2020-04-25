@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+
 
 @Component({
   selector: 'app-inner-header-bar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InnerHeaderBarComponent implements OnInit {
 
+  @Output() editMode = new EventEmitter;
+  onEditFlag: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onEdit() {
+    this.onEditFlag = !this.onEditFlag;
+    this.editMode.emit(this.onEditFlag);
+  }
 }
