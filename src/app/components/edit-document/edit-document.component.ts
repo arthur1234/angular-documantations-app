@@ -1,26 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
-
-import {ActivatedRoute, Params} from '@angular/router';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+
 import {ReqResService} from '../../services/req-res.service';
 import {Post} from '../../shared/interfaces';
-
-
 
 @Component({
   selector: 'app-edit-document',
   templateUrl: './edit-document.component.html',
   styleUrls: ['./edit-document.component.scss']
 })
-export class EditDocumentComponent implements OnInit {
+
+export class EditDocumentComponent implements OnInit, OnDestroy {
 
   @Input()  postData: Post;
 
   form: FormGroup;
   post: Post;
-  submitted: boolean;
   uSub: Subscription;
   editorStyle: object = {
     height: '250px',
@@ -30,19 +27,13 @@ export class EditDocumentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private reqResService: ReqResService
-    /*,
-    private postsService: PostsService,
-    private alert: AlertService*/
   ) { }
 
   selectValue( newValue : any ) {
     this.postData.code=newValue;
-    console.log(newValue);
   }
 
   ngOnInit(): void {
-
-
 
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required ),
@@ -51,18 +42,10 @@ export class EditDocumentComponent implements OnInit {
     });
     this.post = this.postData;
 
-    console.log(this.post.title)
-
-    // this.route.params.pipe(
-    //   switchMap( ( Params) => {
-    //     console.log(Params);
-    //     return '';
-    //   })
-    // )
   }
 
   submit() {
-    console.log(this.postData.code)
+
     if (this.form.invalid) {
       return;
     }
@@ -79,10 +62,15 @@ export class EditDocumentComponent implements OnInit {
       .create(this.post)
       .subscribe(() => {
         this.form.reset();
-        // this.alert.success('Post created.');
        })
 
     console.log(this.post);
+  }
+
+  ngOnDestroy() {
+    if (this.uSub) {
+      this.uSub.unsubscribe();
+    }
   }
 
 

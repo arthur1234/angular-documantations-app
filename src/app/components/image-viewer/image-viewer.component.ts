@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-declare var $: any;
-
 @Component({
   selector: 'app-image-viewer',
   templateUrl: './image-viewer.component.html',
@@ -16,11 +14,7 @@ export class ImageViewerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {
-    $(document).ready(() => {
-
-    });
-  }
+  ngOnInit(): void {}
 
 
   onMouseMove($event: MouseEvent, outerDiv: HTMLDivElement, innerImg: HTMLImageElement) {

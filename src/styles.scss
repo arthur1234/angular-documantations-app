@@ -75,6 +75,14 @@ mat-sidenav {
   width: 250px;
 }
 
+.mat-button:hover {
+  color: #cccccc;
+}
+
+.mat-button .mat-button-wrapper:hover {
+  color: #cccccc;
+}
+
 main {
   padding: 10px;
 }

@@ -26,9 +26,7 @@ export class ReqResService {
         };
       }));
 
-
   }
-
 }
 
 

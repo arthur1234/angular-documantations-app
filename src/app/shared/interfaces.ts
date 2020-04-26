@@ -12,9 +12,6 @@ export  class ItemsValues {
   }
 }
 
-
-
-
 export interface Post {
   _id?: string;
   title: string;
@@ -23,4 +20,27 @@ export interface Post {
   author: string;
   date?: any;
   imgURLs?: any;
+}
+
+export interface UserDetails {
+  _id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  exp: number;
+  iat: number;
+
+}
+
+export interface TokenResponse {
+  token: string;
+}
+
+export interface TokenPayload {
+  _id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
 }

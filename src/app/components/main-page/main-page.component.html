@@ -1,15 +1,10 @@
-
-
-
-
-
-<div style="height: 80vh;" >
+<div style="height: 80vh;">
 
 
   <mat-toolbar color="primary" color="primary">
     <mat-toolbar-row>
       <!--   Hamburger mobile menu icon -->
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <button (click)="sidenav.toggle()" fxHide.gt-sm fxShow="true" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
 
@@ -17,7 +12,7 @@
       <span class="menu-spacer"></span>
 
       <!--   DESKTOP MENU -->
-      <div fxShow="true" fxHide.lt-md>
+      <div fxHide.lt-md fxShow="true">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
 
         <!--   DESKTOP MENU -->
@@ -25,7 +20,7 @@
           <!-- Handle main menu items here -->
           <ng-container *ngIf="item.below">
             <!--   if submenu exist-->
-            <a   mat-button [matMenuTriggerFor]="menu.buildMenu" class="btn-primary">
+            <a [matMenuTriggerFor]="menu.buildMenu" class="btn-primary" mat-button>
               {{item.title}}
               <i class="material-icons right arrow-icons">arrow_drop_down</i>
             </a>
@@ -34,18 +29,25 @@
           </ng-container>
           <!-- Leaf sub menu items here -->
           <ng-container *ngIf="!item.below">
-            <a    mat-button  [routerLink]="item.link">
+            <a [routerLink]="item.link" mat-button>
               {{item.title}}
             </a>
           </ng-container>
         </ng-container>
 
-        <span *ngIf="auth.isLoggedIn()">
-          <a    mat-button routerLink=""  (click)="auth.logout()">
+        <span *ngIf="auth.isLoggedIn()" class="menu-outer-btn">
+          <a href="#" mat-button>
+            Create Page
+          </a>
+          <i class="material-icons right arrow-icons">add_circle_outline</i>
+        </span>
+        <span *ngIf="auth.isLoggedIn()" class="menu-outer-btn">
+          <a (click)="auth.logout()" mat-button routerLink="">
             Logout
           </a>
           <i class="material-icons right arrow-icons">logout</i>
         </span>
+
       </div>
 
 
@@ -57,11 +59,11 @@
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-<!--        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>-->
+        <!--        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>-->
         <ng-container *ngFor="let item of menuArray">
           <!-- Handle main menu items here -->
           <ng-container *ngIf="item.below">
-            <a mat-list-item [matMenuTriggerFor]="menu.buildMenu">
+            <a [matMenuTriggerFor]="menu.buildMenu" mat-list-item>
               {{item.title}}
             </a>
             <!-- Handle sub menu items -->
@@ -69,20 +71,33 @@
           </ng-container>
           <!-- Leaf sub menu items here -->
           <ng-container *ngIf="!item.below">
-            <a mat-list-item color="primary" [routerLink]="item.link">
+            <a [routerLink]="item.link" color="primary" mat-list-item>
               {{item.title}}
             </a>
           </ng-container>
         </ng-container>
 
       </mat-nav-list>
+
+      <span *ngIf="auth.isLoggedIn()" class="menu-outer-btn">
+          <a href="#" mat-button>
+            Create Page
+          </a>
+          <i class="material-icons right arrow-icons">add_circle_outline</i>
+        </span>
+      <br>
+      <span *ngIf="auth.isLoggedIn()" class="menu-outer-btn">
+          <a (click)="auth.logout()" mat-button routerLink="">
+            Logout
+          </a>
+          <i class="material-icons right arrow-icons">logout</i>
+        </span>
+
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
 
 
-
       <app-document></app-document>
-
 
 
     </mat-sidenav-content>

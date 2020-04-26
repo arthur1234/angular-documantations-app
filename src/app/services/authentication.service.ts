@@ -1,33 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
+
 import {environment} from '../../environments/environment';
-
-export interface UserDetails {
-  _id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  exp: number;
-  iat: number;
-
-}
-
-interface TokenResponse {
-  token: string;
-}
-
-export interface TokenPayload {
-  _id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-}
+import {TokenPayload, TokenResponse, UserDetails} from '../shared/interfaces';
 
 @Injectable()
 export class AuthenticationService {

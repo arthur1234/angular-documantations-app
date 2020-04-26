@@ -36,6 +36,7 @@ import { AuthGuardService} from './shared/auth-guard.service';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import {SharedModule} from './shared/shared.module';
 import { EditDocumentComponent } from './components/edit-document/edit-document.component';
+import { CreateNewDocumentComponent } from './components/create-new-document/create-new-document.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EditDocumentComponent } from './components/edit-document/edit-document.
     LoginComponent,
     WelcomePageComponent,
     CodeEditorComponent,
-    EditDocumentComponent
+    EditDocumentComponent,
+    CreateNewDocumentComponent
   ],
   imports: [
     BrowserModule,
